@@ -69,14 +69,19 @@ if st.button("Predict"):
     # 预测类别的概率
     predicted_proba = model.predict_proba(features)[0]
 
+    # 创建 SHAP 解释器，基于树模型（如随机森林）
+    explainer_shap = shap.TreeExplainer(model)
+    # 计算 SHAP 值，用于解释模型的预测
+    shap_values = explainer_shap.shap_values(pd.DataFrame([feature_values], columns=feature_names))
+
     # 显示预测结果
     st.write(f"**Predicted Class:** {predicted_class} (1: Disease, 0: No Disease)")
     st.write(f"**Prediction Probabilities:** {predicted_proba}")
 
     # 根据预测结果生成建议
-    probability = predicted_proba[predicted_class] * 100
     # 如果预测类别为 1（高风险）
-    if predicted_class == 1:
+    if float(predicted_proba[1])>explainer_shap.expected_value[1]:
+        probability = predicted_proba[1] * 100
         advice = (
             f"According to our model, you have a high risk of hypertension. "
             f"The model predicts that your probability of having hypertension is {probability:.1f}%. "
@@ -84,6 +89,7 @@ if st.button("Predict"):
         )
    # 如果预测类别为 0（低风险）
     else:
+        probability = predicted_proba[0] * 100
         advice = (
             f"According to our model, you have a low risk of hypertension. "
             f"The model predicts that your probability of not having hypertension is {probability:.1f}%. "
@@ -92,24 +98,17 @@ if st.button("Predict"):
     st.write(advice)
     # SHAP 解释
     st.subheader("SHAP Force Plot Explanation")
-    # 创建 SHAP 解释器，基于树模型（如随机森林）
-    explainer_shap = shap.TreeExplainer(model)
-    # 计算 SHAP 值，用于解释模型的预测
-    shap_values = explainer_shap.shap_values(pd.DataFrame([feature_values], columns=feature_names))
 
     # 根据预测类别显示 SHAP 强制图
     # 期望值（基线值）
     # 解释类别 1（患病）的 SHAP 值
     # 特征值数据
     # 使用 Matplotlib 绘图
-    if predicted_class == 1:
-        shap.force_plot(explainer_shap.expected_value[1], shap_values[:, :, 1], pd.DataFrame([feature_values], columns=feature_names), matplotlib=True)
+    shap.force_plot(explainer_shap.expected_value[1], shap_values[:, :, 1], pd.DataFrame([feature_values], columns=feature_names), matplotlib=True)
     # 期望值（基线值）
     # 解释类别 0（未患病）的 SHAP 值
     # 特征值数据
     # 使用 Matplotlib 绘图
-    else:
-         shap.force_plot(explainer_shap.expected_value[1], shap_values[:, :, 1], pd.DataFrame([feature_values], columns=feature_names), matplotlib=True)
-
+    
     #plt.savefig("shap_force_plot.png", bbox_inches='tight', dpi=1200)
     st.pyplot(plt.gcf(), use_container_width=True)
