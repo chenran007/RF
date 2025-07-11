@@ -109,7 +109,7 @@ if st.button("Predict"):
     # 特征值数据
     # 使用 Matplotlib 绘图
     else:
-         shap.force_plot(explainer_shap.expected_value[0], shap_values[:, :, 0], pd.DataFrame([feature_values], columns=feature_names), matplotlib=True)
+         shap.force_plot(explainer_shap.expected_value[1], shap_values[:, :, 1], pd.DataFrame([feature_values], columns=feature_names), matplotlib=True)
 
     #plt.savefig("shap_force_plot.png", bbox_inches='tight', dpi=1200)
     st.pyplot(plt.gcf(), use_container_width=True)
