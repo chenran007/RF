@@ -28,7 +28,7 @@ PDC = st.selectbox("痰湿质类型 (PDC):", options=[0, 1])
 
 Age = st.selectbox("年龄 (Age):", options=[0, 1,2])
 
-Pension = st.selectbox("医保类型 (Pension):", options=[0, 1])
+Pension = st.selectbox("退休金 (Pension):", options=[0, 1])
 
 WHtR = st.selectbox("腰高比 (WHtR):", options=[0, 1])
 
