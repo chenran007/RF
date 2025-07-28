@@ -18,45 +18,45 @@ X_test = pd.read_csv('X_test.csv')
 feature_names = ["BC","YiDC", "PDC", "Age", "Pension", "WHtR", "CO", "BMI", "Smoking", "SCL", "Sleepquality", "Pain", "Eyesight", "Diffaction", "Hyperlipidemia", "Hyperuricemia","FLD", "OA", "Diabetes"]
 
 #Streamlit 用户界面
-st.title("老年高血压预测器")
+st.title("Elderly Hypertension Predictor")
 
-BC = st.selectbox("平和质类型 (BC):", options=[0, 1])
+BC = st.selectbox("Balanced constitution (BC):", options=[0, 1])
 
-YiDC = st.selectbox("阴虚质类型 (YiDC):", options=[0, 1])
+YiDC = st.selectbox("Yin-deficiency constitution (YiDC):", options=[0, 1])
 
-PDC = st.selectbox("痰湿质类型 (PDC):", options=[0, 1])
+PDC = st.selectbox("Phlegm-dampness constitution (PDC):", options=[0, 1])
 
-Age = st.selectbox("年龄 (Age):", options=[0, 1,2])
+Age = st.selectbox("Age:", options=[0, 1,2])
 
-Pension = st.selectbox("退休金 (Pension):", options=[0, 1])
+Pension = st.selectbox("Pension:", options=[0, 1])
 
-WHtR = st.selectbox("腰高比 (WHtR):", options=[0, 1])
+WHtR = st.selectbox("Waist-to-height ratio (WHtR):", options=[0, 1])
 
-CO = st.selectbox("中心性肥胖 (CO):", options=[0, 1])
+CO = st.selectbox("Central obesity (CO):", options=[0, 1])
 
-BMI = st.selectbox("体质指数 (BMI):", options=[0,1,2,3])
+BMI = st.selectbox("Body Mass Index (BMI):", options=[0,1,2,3])
 
-Smoking = st.selectbox("吸烟 (Smoking):", options=[0, 1])
+Smoking = st.selectbox("Smoking:", options=[0, 1])
 
-SCL = st.selectbox("精神文化生活 (SCL):", options=[0, 1])
+SCL = st.selectbox("Spiritual and cultural life (SCL):", options=[0, 1])
 
-Sleepquality = st.selectbox("睡眠质量 (Sleepquality):", options=[0,1,2,3])
+Sleepquality = st.selectbox("Sleep quality:", options=[0,1,2,3])
 
-Pain = st.selectbox("身体疼痛 (Pain):", options=[0, 1])
+Pain = st.selectbox("Pain:", options=[0, 1])
 
-Eyesight = st.selectbox("视力 (Eyesight):", options=[0, 1,2,3])
+Eyesight = st.selectbox("Eyesight:", options=[0, 1,2,3])
 
-Diffaction = st.selectbox("行动困难 (Diffaction):", options=[0, 1])
+Diffaction = st.selectbox("Difficulty in action (Diffaction):", options=[0, 1])
 
-Hyperlipidemia = st.selectbox("高脂血症 (Hyperlipidemia):", options=[0, 1])
+Hyperlipidemia = st.selectbox("Hyperlipidemia:", options=[0, 1])
 
-Hyperuricemia = st.selectbox("高尿酸血症 (Hyperuricemia):", options=[0, 1])
+Hyperuricemia = st.selectbox("Hyperuricemia:", options=[0, 1])
 
-FLD = st.selectbox("脂肪肝 (FLD):", options=[0, 1])
+FLD = st.selectbox("Fatty liver disease (FLD):", options=[0, 1])
 
-OA = st.selectbox("关节炎 (OA):", options=[0, 1])
+OA = st.selectbox("Osteoarthritis (OA):", options=[0, 1])
 
-Diabetes = st.selectbox("糖尿病 (Diabetes):", options=[0, 1])
+Diabetes = st.selectbox("Diabetes:", options=[0, 1])
 
 # 实现输入数据并进行预测
 feature_values = [BC,YiDC, PDC, Age, Pension, WHtR, CO, BMI, Smoking, SCL, Sleepquality, Pain, Eyesight, Diffaction, Hyperlipidemia, Hyperuricemia,FLD, OA, Diabetes]  # 将用户输入的特征值存入列表
