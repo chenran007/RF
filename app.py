@@ -15,7 +15,7 @@ model = joblib.load('RF.pkl')
 X_test = pd.read_csv('X_test.csv')
 
 #定义特征名称，对应数据集中的列名
-feature_names = ["BC","YiDC", "PDC", "Age", "Pension", "WHtR", "CO", "BMI", "Smoking", "SCL", "Sleepquality", "Pain", "Eyesight", "Diffaction", "Hyperlipidemia", "Hyperuricemia","FLD", "OA", "Diabetes"]
+feature_names = ["BC","YiDC", "PDC", "Age", "Pension", "WHtR", "CO", "BMI", "Smoking", "SCL", "Sleepquality", "Pain", "Eyesight", "Mobilitydifficulty", "Hyperlipidemia", "Hyperuricemia","FLD", "OA", "Diabetes"]
 
 #Streamlit 用户界面
 st.title("Elderly Hypertension Predictor")
@@ -46,7 +46,7 @@ Pain = st.selectbox("Pain:", options=[0, 1])
 
 Eyesight = st.selectbox("Eyesight:", options=[0, 1,2,3])
 
-Diffaction = st.selectbox("Difficulty in action (Diffaction):", options=[0, 1])
+Mobilitydifficulty = st.selectbox("Mobility difficulty:", options=[0, 1])
 
 Hyperlipidemia = st.selectbox("Hyperlipidemia:", options=[0, 1])
 
