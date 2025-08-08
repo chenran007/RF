@@ -59,7 +59,7 @@ OA = st.selectbox("Osteoarthritis (OA):", options=[0, 1])
 Diabetes = st.selectbox("Diabetes:", options=[0, 1])
 
 # 实现输入数据并进行预测
-feature_values = [BC,YiDC, PDC, Age, Pension, WHtR, CO, BMI, Smoking, SCL, Sleepquality, Pain, Eyesight, Diffaction, Hyperlipidemia, Hyperuricemia,FLD, OA, Diabetes]  # 将用户输入的特征值存入列表
+feature_values = [BC,YiDC, PDC, Age, Pension, WHtR, CO, BMI, Smoking, SCL, Sleepquality, Pain, Eyesight, Mobilitydifficulty, Hyperlipidemia, Hyperuricemia,FLD, OA, Diabetes]  # 将用户输入的特征值存入列表
 features = np.array([feature_values])  # 将特征转换为 NumPy 数组，适用于模型输入
 
 # 当用户点击 "Predict" 按钮时执行以下代码
